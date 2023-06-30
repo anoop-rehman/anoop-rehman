@@ -1,4 +1,4 @@
-### :-)
+:-)
 
 3rd year EngSci MI student @ UofT 
 <!--
