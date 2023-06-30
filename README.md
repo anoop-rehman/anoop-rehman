@@ -1,5 +1,6 @@
 ### :-)
 
+3rd year EngSci MI student @ UofT 
 <!--
 **anoop-rehman/anoop-rehman** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
