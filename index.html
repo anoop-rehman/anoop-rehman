@@ -371,6 +371,22 @@
 
                 <!-- Fourth Section: Projects -->
                 <section id="projects" class="section scrollspy">
+                    <h3 class="page-title white-text blue">Recent Projects</h3>
+                    <div class="container">
+                        <div class="row" id="recent-projects-container">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+                        <div class="row center">
+                            <button id="load-more-btn" class="btn waves-effect waves-light blue"
+                                style="margin-top: 20px;">
+                                Load More Projects
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Fourth Section: Projects (Original Static Content - Hidden) -->
+                <section id="projects-static" class="section scrollspy" style="display: none;">
                     <h3 class="page-title white-text blue">Projects</h3>
                     <div class="container">
                         <div class="row">
@@ -1206,6 +1222,187 @@
                     </div>
                 `;
             }
+        });
+    </script>
+
+    <!-- Recent Projects Dynamic Content -->
+    <script>
+        // Array of recent projects based on resume
+        const recentProjects = [
+            {
+                title: "TB Screener",
+                description: "Developed a web app that screens for early Tuberculosis symptoms and generates a summarized report for doctors using RAG-enhanced Gemini Pro, Chirp, Langchain, React, and Flask.",
+                tools: "RAG-enhanced Gemini Pro, Chirp, Langchain, React, Flask",
+                accomplishments: [
+                    "Won the Best Use of Google Cloud award",
+                    "Screens for early TB symptoms using AI",
+                    "Generates comprehensive reports for medical professionals",
+                    "Uses advanced RAG techniques for accurate diagnosis"
+                ],
+                image: "assets/img/utmist-logo.svg",
+                github: "https://github.com/anoop-rehman/tb-screener",
+                demo: "https://tb-screener-demo.herokuapp.com",
+                date: "Mar 2024"
+            },
+            {
+                title: "Multi-Agent Soccer Evolution",
+                description: "Leading a team of 11 developers to evolve creatures with optimized morphologies and train them with multi-agent reinforcement learning to play 2v2 soccer.",
+                tools: "Unity, C#, PyTorch, DeepMind's MuJoCo, Multi-Agent RL",
+                accomplishments: [
+                    "Novel modified curriculum learning approach",
+                    "Training from low-level motor skills to high-level team behavior",
+                    "Evolutionary algorithms for creature morphology optimization",
+                    "Multi-agent coordination in competitive environment"
+                ],
+                image: "assets/img/utmist-logo.svg",
+                github: "https://github.com/anoop-rehman/soccer-evolution",
+                demo: null,
+                date: "Sep 2023 - Present"
+            },
+            {
+                title: "Osteoarthritis Detection System",
+                description: "Created a CNN classifier to detect and grade the severity of osteoarthritis in knee ultrasound images using TensorFlow.",
+                tools: "TensorFlow, CNN, StyleGAN, Medical Imaging",
+                accomplishments: [
+                    "CNN classifier for osteoarthritis severity grading",
+                    "Explored StyleGAN for synthetic ultrasound image generation",
+                    "Improved knee synovitis classification accuracy",
+                    "Medical imaging analysis and diagnosis support"
+                ],
+                image: "assets/img/utmist-logo.svg",
+                github: "https://github.com/anoop-rehman/osteoarthritis-detection",
+                demo: null,
+                date: "May 2023 - Sep 2023"
+            },
+            {
+                title: "3D Creature Evolution",
+                description: "Helped develop a genetic algorithm that mimics biological evolution to evolve 3D creatures using Unity and C#.",
+                tools: "Unity, C#, Genetic Algorithms, 3D Modeling",
+                accomplishments: [
+                    "Genetic algorithm implementation for creature evolution",
+                    "3D creature morphology optimization",
+                    "Biological evolution simulation in virtual environment",
+                    "Unity-based 3D creature generation and testing"
+                ],
+                image: "assets/img/utmist-logo.svg",
+                github: "https://github.com/anoop-rehman/creature-evolution",
+                demo: null,
+                date: "Sep 2022 - May 2023"
+            },
+            {
+                title: "Scotiabank CCAI Classifier",
+                description: "Built a semi-supervised classifier model that combines Google CCAI topics and custom highlights with telephony metadata to predict better call drivers.",
+                tools: "Python, Google CCAI, Machine Learning, Telephony Data",
+                accomplishments: [
+                    "Achieved 94% accuracy for 10 most common call drivers",
+                    "Semi-supervised learning approach",
+                    "Integration with Google CCAI platform",
+                    "Real-time call center optimization"
+                ],
+                image: "assets/img/utmist-logo.svg",
+                github: null,
+                demo: null,
+                date: "May 2024 - Apr 2025"
+            },
+            {
+                title: "Erlang-A Forecasting Model",
+                description: "Developed a novel ensemble model based on Erlang-A to improve intraday forecasting of ASA time-series data for optimizing real-time scheduling and staffing at call centers.",
+                tools: "Python, Erlang-A, Time Series Analysis, Ensemble Methods",
+                accomplishments: [
+                    "Novel ensemble model for ASA forecasting",
+                    "Real-time scheduling optimization",
+                    "Staffing prediction for call centers",
+                    "Time-series data analysis and modeling"
+                ],
+                image: "assets/img/utmist-logo.svg",
+                github: null,
+                demo: null,
+                date: "May 2024 - Apr 2025"
+            }
+        ];
+
+        let displayedProjects = 0;
+        const projectsPerLoad = 2;
+
+        // Function to generate HTML for a single project
+        function generateProjectHTML(project) {
+            return `
+                <div class="col s12 m6 l4">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img alt="${project.title}" src="${project.image}" 
+                                style="height: 100%; width: 100%" class="activator" 
+                                onerror="this.src='assets/img/project-default.png'" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator blue-text hoverline">${project.title}<i
+                                    class="mdi-navigation-more-vert right"></i></span>
+                            <p>${project.description}</p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text"><small>Accomplishments</small><i
+                                    class="mdi-navigation-close right"></i></span>
+                            <ul>
+                                <li><b>Tools:</b> ${project.tools}</li>
+                                ${project.accomplishments.map(accomplishment => `<li>${accomplishment}</li>`).join('')}
+                            </ul>
+                            <div class="card-action">
+                                ${project.demo ? `
+                                    <a aria-label="Visit ${project.title} demo" href="${project.demo}" 
+                                        target="_blank" data-position="top" data-tooltip="View Demo"
+                                        class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped">
+                                        <i class="fa fa-external-link"></i>
+                                    </a>
+                                ` : ''}
+                                ${project.github ? `
+                                    <a aria-label="Visit the GitHub repo for ${project.title}"
+                                        href="${project.github}" target="_blank" data-position="top" data-tooltip="View Source"
+                                        class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to load and display projects
+        function loadProjects() {
+            const container = document.getElementById('recent-projects-container');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+
+            // Calculate how many projects to show
+            const endIndex = Math.min(displayedProjects + projectsPerLoad, recentProjects.length);
+
+            // Generate HTML for new projects
+            for (let i = displayedProjects; i < endIndex; i++) {
+                container.innerHTML += generateProjectHTML(recentProjects[i]);
+            }
+
+            displayedProjects = endIndex;
+
+            // Update button visibility
+            if (displayedProjects >= recentProjects.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+
+            // Re-initialize tooltips for new elements
+            $('.tooltipped').tooltip();
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load initial projects
+            loadProjects();
+
+            // Add event listener to load more button
+            document.getElementById('load-more-btn').addEventListener('click', function () {
+                loadProjects();
+            });
         });
     </script>
 </body>
