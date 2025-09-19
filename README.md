@@ -21,8 +21,9 @@ Website template cloned from https://github.com/varadbhogayata/varadbhogayata.gi
 ![](readme_images/Screen%20Shot%202025-09-19%20at%203.07.07%20PM.png)
 ![](readme_images/Screen%20Shot%202025-09-19%20at%203.07.21%20PM.png)
 
-
 # Activity 5
+![](readme_images/Screen%20Shot%202025-09-19%20at%203.36.25%20PM.png)
+![](readme_images/Screen%20Shot%202025-09-19%20at%203.37.21%20PM.png)
 
 ___
 
