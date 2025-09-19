@@ -1,7 +1,20 @@
+# Activity 1
 Hi! I'm Anoop.
 
 Website template cloned from https://github.com/varadbhogayata/varadbhogayata.github.io.
 
+![](readme_images/Screen%20Shot%202025-09-19%20at%208.17.15%20AM.png)
+
+
+# Activity 2
+
+# Activity 3
+
+# Activity 4
+
+# Activity 5
+
+___
 
 # Personal Portfolio ⚡️ 
 > A clean, beautiful, responsive portfolio template for Software Developers!
