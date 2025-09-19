@@ -1,3 +1,8 @@
+Hi! I'm Anoop.
+
+Website template cloned from https://github.com/varadbhogayata/varadbhogayata.github.io.
+
+
 # Personal Portfolio ⚡️ 
 > A clean, beautiful, responsive portfolio template for Software Developers!
 
