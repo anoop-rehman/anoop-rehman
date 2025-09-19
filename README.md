@@ -14,6 +14,9 @@ Website template cloned from https://github.com/varadbhogayata/varadbhogayata.gi
 
 # Activity 3
 
+![](readme_images/Screen%20Shot%202025-09-19%20at%209.31.01%20AM.png)
+![](readme_images/Screen%20Shot%202025-09-19%20at%209.29.44%20AM.png)
+
 # Activity 4
 
 # Activity 5
