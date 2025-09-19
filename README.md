@@ -8,6 +8,10 @@ Website template cloned from https://github.com/varadbhogayata/varadbhogayata.gi
 
 # Activity 2
 
+![](readme_images/Screen%20Shot%202025-09-19%20at%208.48.22%20AM.png)
+
+![](readme_images/Screen%20Shot%202025-09-19%20at%208.51.19%20AM.png)
+
 # Activity 3
 
 # Activity 4
